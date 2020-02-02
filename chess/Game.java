@@ -9,6 +9,7 @@ public class Game {
 		b.printBoard();
 		while (!gameEnd){
 			//write the game logic
+
 		}		
 	}
 	
