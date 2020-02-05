@@ -1,6 +1,6 @@
 package chess;
 
-public class Piece {
+public abstract class Piece {
     private int row;
     private int column;
     private String symbol;
@@ -38,5 +38,5 @@ public class Piece {
         this.column=c;
     }
 
-    public boolean isLegitMove(int i, int j, int r, int c){return false;}
+    public abstract boolean isLegitMove(int i, int j, int r, int c);
 }

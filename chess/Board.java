@@ -65,11 +65,11 @@ public class Board {
 			int row=i+1;
 				for (int j=0; j<board[1].length; j++){
 					if ((j==0) && board[i][j].hasPiece())
-						System.out.print(row+" ");
+						System.out.print(row+" " + board[i][j].getPiece().getSymbol()); //CHANGED
 					else if ((j==0) && !board[i][j].hasPiece())
 						System.out.print(row+"  " );
 					else if (board[i][j].hasPiece())
-						System.out.print("|");
+						System.out.print("|" + board[i][j].getPiece().getSymbol());
 					else
 						System.out.print("| ");
 				}
