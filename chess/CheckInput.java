@@ -2,7 +2,6 @@ package chess;
 
 public class CheckInput {
 
-
 	public boolean checkCoordinateValidity(String input) {
 		if (input.length()!=2)
 			return false;
