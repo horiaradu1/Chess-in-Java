@@ -83,9 +83,13 @@ public class Board {
 
 	public boolean movePiece(int i0, int j0, int i1, int j1, Piece p){
 		if (p.isLegitMove(i0, j0, i1, j1)){
-			//King taken to implement
+			if (board[i1][j1].getPiece().getSymbol()=="U+2654") //white was taken, black wins
+				return true;
+			if (board[i1][j1].getPiece().getSymbol()=="U+265A") //black was taken, white wins
+				return true;
 			board[i1][j1].removePiece();
-			setPiece(i0, j0, p);
+			setPiece(i1, j1, p);
+
 		}
 		else{
 			System.out.println("Illegitimate Move");
@@ -108,4 +112,61 @@ public class Board {
 		return false;
 	}
 
+	public static boolean rowLineCheck (int iIn, int jIn, int iFi, int jFi){
+		if (jIn > jFi){
+			int a;
+			a=jIn;
+			jIn=jFi;
+			jFi=a;
+		}
+		for (int i=jIn+1; i<jFi; i++)
+			if (Board.getBoard()[iIn][i].hasPiece())
+				return false;
+		return true;
+	}
+
+	public static boolean columnLineCheck (int iIn, int jIn, int iFi, int jFi){
+		if (iIn > iFi){
+			int a;
+			a=iIn;
+			iIn=iFi;
+			iFi=a;
+		}
+		for (int i=iIn+1; i<iFi; i++)
+			if (Board.getBoard()[i][jIn].hasPiece())
+				return false;
+		return true;
+	}
+
+	public static boolean mainDiagLineCheck (int iIn, int jIn, int iFi, int jFi){
+		if (iIn > iFi){
+			int a,b;
+			a=iIn;
+			iIn=iFi;
+			iFi=a;
+			b=jIn;
+			jIn=jFi;
+			jFi=b;
+		}
+		for (int i=1; i<(iFi-iIn); i++)
+			if (Board.getBoard()[iIn+i][jIn+i].hasPiece())
+				return false;
+		return true;
+	}
+
+	public static boolean secDiagLineCheck (int iIn, int jIn, int iFi, int jFi){
+		if (iIn > iFi){
+			int a,b;
+			a=iIn;
+			iIn=iFi;
+			iFi=a;
+			b=jIn;
+			jIn=jFi;
+			jFi=b;
+		}
+		for (int i=1; i<(iFi-iIn); i++)
+		if (Board.getBoard()[iIn+i][jIn-i].hasPiece())
+			return false;
+		return true;
+	}
 }
