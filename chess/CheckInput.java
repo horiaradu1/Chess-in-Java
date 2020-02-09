@@ -2,7 +2,7 @@ package chess;
 
 public class CheckInput {
 
-	public boolean checkCoordinateValidity(String input) {
-		return input.matches("[0-7][a-h]");
+	public static boolean checkCoordinateValidity(String input) {
+		return input.matches("[1-8][a-h]");
 	}
 }

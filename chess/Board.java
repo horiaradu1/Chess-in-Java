@@ -82,18 +82,14 @@ public class Board {
 
 
 	public boolean movePiece(int i0, int j0, int i1, int j1, Piece p){
-		if (p.isLegitMove(i0, j0, i1, j1)){
-			if (board[i1][j1].getPiece().getSymbol()=="U+2654") //white was taken, black wins
+		if (board[i1][j1].hasPiece()){
+			if (board[i1][j1].getPiece().getSymbol().charAt(0)=='♔' || board[i1][j1].getPiece().getSymbol().charAt(0)=='♚'){
 				return true;
-			if (board[i1][j1].getPiece().getSymbol()=="U+265A") //black was taken, white wins
-				return true;
-			board[i1][j1].removePiece();
-			setPiece(i1, j1, p);
+			}
+		}
+		board[i0][j0].removePiece();
+		setPiece(i1, j1, p);
 
-		}
-		else{
-			System.out.println("Illegitimate Move");
-		}
 		return false;
 	}
 
