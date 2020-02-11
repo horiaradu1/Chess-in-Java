@@ -1,5 +1,5 @@
 package chess;
-import java.util.Scanner;
+import java.io.Console;
 
 public class Game {
 	private static boolean gameEnd=false;
@@ -21,14 +21,13 @@ public class Game {
 				System.out.println("------ White moves ------");
 			else System.out.println("------ Black moves ------");
 			System.out.println("> Enter origin:");
-			Scanner userInput = new Scanner(System.in);
-			initialInput = userInput.nextLine();
+			initialInput = System.console().readLine();
 			if (CheckInput.checkCoordinateValidity(initialInput)){
 				int[] inLoc = changeInput(initialInput);
 				if (Board.getBoard()[inLoc[0]][inLoc[1]].hasPiece() && Board.getBoard()[inLoc[0]][inLoc[1]].getPiece().getColour() == turn){
 					piece = Board.getBoard()[inLoc[0]][inLoc[1]].getPiece();
 					System.out.println("> Enter destination:");
-					finalInput = userInput.nextLine();
+					finalInput = System.console().readLine();
 					if (CheckInput.checkCoordinateValidity(finalInput)){
 						int[] fnLoc = changeInput(finalInput);
 						if (piece.isLegitMove(inLoc[0],inLoc[1],fnLoc[0],fnLoc[1])){
