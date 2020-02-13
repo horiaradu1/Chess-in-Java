@@ -7,9 +7,9 @@ public class King extends Piece {
         if (Board.getBoard()[iFi][jFi].hasPiece())
             if (Board.getBoard()[iFi][jFi].getPiece().getColour()==colour)
                 return false;
-        if (Math.abs(iFi-iIn) <= 1 && Math.abs(jFi-jIn) <= 1 )
+        if (Math.abs(iFi-iIn) <= 1 && Math.abs(jFi-jIn) <= 1)
             return true;
-        return true;
+        return false;
     }
 
 }
