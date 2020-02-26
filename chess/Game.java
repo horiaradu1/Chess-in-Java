@@ -22,12 +22,26 @@ public class Game {
 			else System.out.println("------ Black moves ------");
 			System.out.println("> Enter origin:");
 			initialInput = System.console().readLine();
+			if (initialInput.matches("END|end|End|eNd|enD|eND|EnD|ENd")){
+				if (turn == PieceColour.WHITE)
+					System.out.println("------ ! White Resigns ! ------\n------ ! Black wins ! ------");
+				else System.out.println("------ ! Black Resigns ! ------\n------ ! White wins ! ------");
+				gameEnd=true;
+				break;
+			}
 			if (CheckInput.checkCoordinateValidity(initialInput)){
 				int[] inLoc = changeInput(initialInput);
 				if (Board.getBoard()[inLoc[0]][inLoc[1]].hasPiece() && Board.getBoard()[inLoc[0]][inLoc[1]].getPiece().getColour() == turn){
 					piece = Board.getBoard()[inLoc[0]][inLoc[1]].getPiece();
 					System.out.println("> Enter destination:");
 					finalInput = System.console().readLine();
+					if (finalInput.matches("END|end|End|eNd|enD|eND|EnD|ENd")){
+						if (turn == PieceColour.WHITE)
+							System.out.println("------ ! White Resigns ! ------\n------ ! Black wins ! ------");
+						else System.out.println("------ ! Black Resigns ! ------\n------ ! White wins ! ------");
+						gameEnd=true;
+						break;
+					}
 					if (CheckInput.checkCoordinateValidity(finalInput)){
 						int[] fnLoc = changeInput(finalInput);
 						if (piece.isLegitMove(inLoc[0],inLoc[1],fnLoc[0],fnLoc[1])){
